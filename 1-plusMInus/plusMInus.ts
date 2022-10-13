@@ -41,9 +41,9 @@ function plusMinus(arr: number[]): void {
     const totalCount = negCount + zeroCount + posCount;
 
     //calculate ratios
-    const posRatio = (posCount / totalCount).toFixed(6);
-    const negRatio = (negCount / totalCount).toFixed(6);
-    const zeroRatio = (zeroCount / totalCount).toFixed(6);
+    const posRatio:string = (posCount / totalCount).toFixed(6);
+    const negRatio:string = (negCount / totalCount).toFixed(6);
+    const zeroRatio:string = (zeroCount / totalCount).toFixed(6);
     
     //print
     console.log(posRatio);
