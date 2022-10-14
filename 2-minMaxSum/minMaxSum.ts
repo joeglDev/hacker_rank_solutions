@@ -1,6 +1,4 @@
 function miniMaxSum(arr: number[]): void {
-  // find min sum (dont sum max)
-  // find max sum (dont sum min)
   //calculate max min digits
   const maxInt = Math.max(...arr);
   const minInt = Math.min(...arr);
@@ -25,7 +23,7 @@ function miniMaxSum(arr: number[]): void {
     }
   });
 
-  console.log(maxCount, minCount);
+  console.log(minCount, maxCount);
 }
 
 miniMaxSum([1, 2, 3, 4, 5]);
