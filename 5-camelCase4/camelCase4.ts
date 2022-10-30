@@ -1,64 +1,66 @@
-//refactor to make more DRY lots of repeated code
-
 function processData(input: string) {
-  const splitOrCombine = input[0];
-  const dataType = input[2];
-  const str = input.slice(4);
+  const eachInput = input.split("\r\n");
 
-  //split
-  if (splitOrCombine === "S") {
-    const splitStrArr = str.split(/(?=[A-Z])/);
-    splitStrArr.forEach((word, index) => {
-      const letters = word.split("");
-      letters[0] = letters[0].toLowerCase();
-      word = letters.join("");
-      splitStrArr[index] = word;
-    });
+  const editedInputs = eachInput.map((input) => {
+    if (input[0] === "S") {
+      input = input.slice(4);
+      const splitInput = input.split(/(?=[A-Z])/).join(" ");
+      let output = splitInput.toLowerCase();
+      output = output.replace(/[()]/g, "");
+      return output;
+    } else if (input[0] === "C") {
+      if (input[2] === "M") {
+        input = input.slice(4);
 
-    return splitStrArr.join(" ");
-  }
-
-  //combine
-  if (splitOrCombine === "C") {
-    const words = str.split(" ");
-    if (dataType === "C") {
-      words.forEach((word, index) => {
-        const letters = word.split("");
-        letters[0] = letters[0].toUpperCase();
-        word = letters.join("");
-        words[index] = word;
-      });
-    } else if (dataType === "M") {
-      words.forEach((word, index) => {
-        if (index > 0) {
-          const letters = word.split("");
-          letters[0] = letters[0].toUpperCase();
-          word = letters.join("");
-          words[index] = word;
-        }
-        if (index === words.length - 1) {
-          word += "()";
-          words[index] = word;
-        }
-      });
-    } else if (dataType === "V") {
-      words.forEach((word, index) => {
-        if (index > 0) {
-          const letters = word.split("");
-          letters[0] = letters[0].toUpperCase();
-          word = letters.join("");
-          words[index] = word;
-        }
-      });
+        const arrInput = input.split(" ").map((word, index) => {
+          if (index == 0) {
+            return word;
+          } else if (index > 0) {
+            const firstChar = word[0].toUpperCase();
+            word = firstChar + word.slice(1);
+            return word;
+          }
+        });
+        const output = arrInput.join("") + "()";
+        return output;
+      } else if (input[2] === "C") {
+        input = input.slice(4);
+        const arrInput = input.split(" ").map((word) => {
+          const firstChar = word[0].toUpperCase();
+          word = firstChar + word.slice(1);
+          return word;
+        });
+        const output = arrInput.join("");
+        return output;
+      } else if (input[2] === "V") {
+        input = input.slice(4);
+        const arrInput = input.split(" ").map((word, index) => {
+          if (index == 0) {
+            return word;
+          } else if (index > 0) {
+            const firstChar = word[0].toUpperCase();
+            word = firstChar + word.slice(1);
+            return word;
+          }
+        });
+        const output = arrInput.join("");
+        return output;
+      }
     }
+  });
 
-    const output = words.join("");
-    return output;
-  }
+  const output = editedInputs.join("\r\n");
+  return output;
 }
 
-console.log(processData("S;V;iPad")); // i pad
-console.log(processData("C;M;mouse pad")); //mousePad()
-console.log(processData("C;C;code swarm")); //CodeSwarm
-console.log(processData("S;C;OrangeHighlighter")); //orange highlighter
-console.log(processData("C;V;camel case")); // camelCase
+console.log(
+  processData(
+    "S;V;iPad\r\nC;M;mouse pad\r\nC;C;code swarm\r\nS;C;OrangeHighlighter"
+  )
+);
+
+console.log(
+  processData(
+    "C;V;can of coke\r\nS;M;sweatTea()\r\nS;V;epsonPrinter\r\nC;M;santa claus\r\nC;C;mirror"
+  )
+);
