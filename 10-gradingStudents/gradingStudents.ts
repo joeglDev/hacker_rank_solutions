@@ -37,4 +37,4 @@ function gradingStudents(grades: number[]): number[] {
 }
 
 console.log(gradingStudents([4, 73, 67, 38, 33])); //4, 73, 67, 38, 33 => 75 67 40 33
-console.log(gradingStudents([2, 37, 38])); // 37, 38
+console.log(gradingStudents([2, 37, 38])); // 40, 38
