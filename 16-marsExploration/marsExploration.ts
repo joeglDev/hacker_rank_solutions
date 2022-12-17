@@ -1,7 +1,7 @@
-/*
+/** 
  * Returns number of characters changed from 'SOS' in a string. Could check each letter individually or split into 3 and check if not 'SoS'
  * @param {string} s - string representing the received communication.
- * 
+ * @returns {number} numCorruptedData - interger value representing the number of characters corrupted.
  */
 
 module.exports = function marsExploration(s: string): number {
