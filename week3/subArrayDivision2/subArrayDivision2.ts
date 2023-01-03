@@ -6,22 +6,24 @@
  *  1. INTEGER_ARRAY s: input array representing numbers
  *  2. INTEGER d: interger representing sum of elements in possible answer arr
  *  3. INTEGER m: integer representing length of possible answer arr
- * 
+ *
  *  ie should find arrays of integer elements which sum to d and have length m
  *  then returns num of possible ans
  */
 
+//uses a sliding window
 function birthday(s: number[], d: number, m: number): number {
-  const possibleAnswers: number[][] = [];
 
-  const findElementsWhichSum = (arr: number[], sum: number, maxLength: number) => {
-    //get max,  sum to running total, check running total; = sum, check length
-    //if correct add to possibleAnswers arr
-  };
-
-  const numberOfPossibleAnswers: number = possibleAnswers.length;
-
-  return numberOfPossibleAnswers;
+    let sum: number;
+    let count = 0;
+    for (let i = 0; i <= s.length - m; i++) {
+        //slices array to i <-> i + length i + m. Loop moves forward in index
+        sum = s.slice(i, i + m).reduce((a: number, b: number)=> a + b);
+        if (sum === d) {
+            count++;
+        }
+    }
+    return count; 
 }
 
 export default birthday;
