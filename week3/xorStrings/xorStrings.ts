@@ -9,4 +9,10 @@ function xorStrings(A: string, B: string): string {
   return xor;
 }
 
-export default xorStrings;
+function xorBitwise(A: number, B: number): number {
+    const xor = A ^ B;
+    
+    return xor;
+  }
+
+export default {xorStrings, xorBitwise};
