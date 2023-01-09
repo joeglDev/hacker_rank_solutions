@@ -7,6 +7,11 @@
  * The function accepts INTEGER_ARRAY arr as parameter.
  */
 
+type Arrayish = { [n: number]: number};
+interface modeHashMap  {
+    [key: string]: number;
+};
+
 
 /**
  * Returns mode number of an input array; lowest number if multiple numbers have the same mode frequency.
@@ -20,7 +25,7 @@ function findMode(arr: number[]): number {
     //if found add one to count else make new key
     //select key value to return 
 
-    const frequency: any = {};
+    const frequency: modeHashMap = {};
     arr.forEach((element) => {
         let initialFrequency = 1;
         if (!frequency[element]) {
@@ -30,7 +35,7 @@ function findMode(arr: number[]): number {
         }
     });
     
-    const maxKey = parseInt(Object.keys(frequency).reduce((a, b) => frequency[a] >= frequency[b] ? a : b));
+    const maxKey: number = parseInt(Object.keys(frequency).reduce((a, b) => frequency[a] >= frequency[b] ? a : b));
 
     return maxKey;
 
