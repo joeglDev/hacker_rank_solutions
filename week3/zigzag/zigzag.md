@@ -1,3 +1,5 @@
+// note problem is bugged and not solvable: https://www.hackerrank.com/challenges/zig-zag-sequence/forum
+
 In this challenge, the task is to debug the existing code to successfully execute all provided test files.
 
 Given an array of

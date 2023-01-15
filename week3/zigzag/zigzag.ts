@@ -1,3 +1,5 @@
+// note problem is bugged and not solvable: https://www.hackerrank.com/challenges/zig-zag-sequence/forum
+
 /**
  * Returns the input array arr permuted into a zigzag array.
  *  An array where numbers increase then decrease in size after index k by k = (n + 1) / 2. n = length of array.
