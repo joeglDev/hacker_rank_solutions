@@ -7,7 +7,6 @@
  * The function accepts INTEGER_ARRAY arr as parameter.
  */
 
-type Arrayish = { [n: number]: number};
 interface modeHashMap  {
     [key: string]: number;
 };
