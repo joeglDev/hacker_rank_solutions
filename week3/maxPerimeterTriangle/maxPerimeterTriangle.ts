@@ -11,5 +11,11 @@ export const maxPerimeterTriangle = (sticks: number[]): number[] => {
     //Choose the one with the longest maximum side. 
     //If more than one has that maximum, choose from them the one with the longest minimum side. 
     //If more than one has that maximum as well, print any one them.
-    return [-1]
+
+    // 1. Check if triangle is degenerate a + b >= c 
+    const sortedSticks = sticks.sort((a, b) => {return a - b});
+ if (sortedSticks[0] + sortedSticks[1] <= sortedSticks[2]) {return [-1]}; 
+
+ return [0]
+
 };
