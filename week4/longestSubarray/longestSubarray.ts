@@ -17,7 +17,6 @@ export function pickingNumbers(a: number[]): number {
   a.forEach((element, index) => {
     const subArray = [];
     subArray.push(a[index]);
-    console.log(subArray);
     for (let i = index + 1; i < a.length; i++) {
       if (Math.abs(element - a[i]) <= 1) {
         subArray.push(a[i]);
@@ -28,17 +27,18 @@ export function pickingNumbers(a: number[]): number {
 
   //check each arr in subarrays and if diff between elements is greater than 1 exclide
   allSubArrays.forEach((arr, arrIndex) => {
+    let minValue = Math.min(...arr);
+    let maxValue = Math.max(...arr);
     arr.forEach((element, elementIndex) => {
-      let checkValue = arr[0];
       if (
-        Math.abs(element - arr[elementIndex + 1]) > 1 ||
-        Math.abs(checkValue - arr[elementIndex + 1]) > 1
+        Math.abs(minValue - element) > 1 ||
+        Math.abs(maxValue - element) > 1
       ) {
         arr.splice(elementIndex + 1, 1);
       }
     });
   });
-
+  console.log(allSubArrays);
   let maxLength = 0;
   allSubArrays.forEach((arr) => {
     //loop through all subarrays and get largest
