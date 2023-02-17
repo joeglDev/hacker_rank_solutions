@@ -15,7 +15,6 @@ export function rotateLeft(d: number, arr: number[]): number[] {
 
   const firstElements = arr.slice(0, d);
   const lastElements = arr.slice(d, arr.length);
-  console.log(firstElements, lastElements);
   const leftShiftedArr = lastElements.concat(firstElements);
 
   return leftShiftedArr;
