@@ -14,21 +14,12 @@ export function kangaroo(
   x2: number,
   v2: number
 ): string {
-  if (x1 > x2 && v1 > v2) {
-    return "NO";
-  } else if (x1 > x2 && v2 > v1) {
-    if (x1 % v2 === 0) {
-      return "YES";
-    } else {
-      return "NO";
-    }
-  } else if (x2 > x1 && v1 > v2) {
-    if (v1 > v2) {
-      return "YES";
-    } else {
-      return "NO";
-    }
-  } else {
+  /*
+Main condition : if v2 is greater than v1 then x1 will never reach to x2
+ and if both velocity are equal then also x1 will never reach to x2 
+    */
+  if (v1 < v2 || v1 == v2) {
     return "NO";
   }
+  return (x2 - x1) % (v1 - v2) == 0 ? "YES" : "NO";
 }
