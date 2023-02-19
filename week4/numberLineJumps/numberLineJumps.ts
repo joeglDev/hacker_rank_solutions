@@ -1,5 +1,5 @@
 /**
- * Models the movement of two objects along a arbitary positive line in steps per turn. 
+ * Models the movement of two objects along a arbitary positive line in steps per turn.
  * Returns "YES" if two objects meet and "NO" if not.
  *
  * @param {number}  x1 - PLacement of object 1.
@@ -14,11 +14,19 @@ export function kangaroo(
   x2: number,
   v2: number
 ): string {
-    //x1 > x2 && v1 > v2 
-    return x1 > x2 && v1 > v2 ? "NO" : "YES";
-    //x1 > x2 && v2 > v1 
+  if (x1 > x2 && v1 > v2) {
+    return "NO";
+  } else if (x1 > x2 && v2 > v1) {
+    if ((x1 % v2) === 0) {
+      return "YES";
+    } else {
+      return "NO";
+    }
+  } else {
+    return "NO";
+  }
 
-    //x2 > x1 && v1 > v2
-    //x2 > x1 && v2 > v1
+  //x2 > x1 && v1 > v2
+  //x2 > x1 && v2 > v1
   return "";
 }
