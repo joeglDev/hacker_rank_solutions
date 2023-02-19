@@ -14,5 +14,11 @@ export function kangaroo(
   x2: number,
   v2: number
 ): string {
+    //x1 > x2 && v1 > v2 
+    return x1 > x2 && v1 > v2 ? "NO" : "YES";
+    //x1 > x2 && v2 > v1 
+
+    //x2 > x1 && v1 > v2
+    //x2 > x1 && v2 > v1
   return "";
 }
