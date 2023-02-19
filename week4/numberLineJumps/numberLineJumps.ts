@@ -22,7 +22,14 @@ export function kangaroo(
     } else {
       return "NO";
     }
-  } else {
+  } else if (x2 > x1 && v1 > v2) {
+    if ((x2 % v1) === 0) {
+        return "YES";
+      } else {
+        return "NO";
+      }
+  }
+   else {
     return "NO";
   }
 
